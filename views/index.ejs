@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!--Don't move the meta tags above, they're v important! -->
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title> BioBots Data App </title>
+    <!-- Bootstrap -->
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      		<div class="container">
+        		<div class="navbar-header">
+          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            			<span class="sr-only">Toggle navigation</span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+            			<span class="icon-bar"></span>
+          			</button>
+          			<a class="navbar-brand" href="#"> BioBots</a>
+        		</div>
+        		<div id="navbar" class="collapse navbar-collapse">
+          			<ul class="nav navbar-nav">
+            			<li class="active"><a href="/">Home</a></li>
+            			<li><a href="/users">About</a></li>
+            			<li><a href="#contact">Contact</a></li>
+          			</ul>
+        		</div><!--/.nav-collapse -->
+      		</div>
+    </nav>
+
+      <div class="container">
+
+      <div class="starter-template">
+        <h1>Welcome to BioBots Data Analysis Platform</h1>
+        <p class="lead">Fill in the parameters below to search print data records<br></p>
+      </div>
+
+      <form class="form-inline" method="post" action="/getdata">
+        <!-- <div class="form-group">
+          <label for="entry">Entry#</label> -->
+          <input type="number" class="form-control" id="entry" name="entrynum" placeholder="1" value ="">
+        <!-- </div> -->
+        <button type="submit" class="btn btn-primary" id="search">Search</button>
+      </form>	
+      <a href="/getdata" class="btn btn-primary">Test</a>
+
+ <!--     <form class="form-inline">
+     	<h3> User Info </h3>
+		  <div class="form-group">
+		    <label for="serial">Serial #</label>
+		    <input type="number" class="form-control" id="serial" placeholder="0">
+		  </div>
+		  <div class="form-group">
+		    <label for="email">Email</label>
+		    <input type="email" class="form-control" id="email" placeholder="user0@gmail.com">
+		  </div>
+		  <br>
+		  <h3> Print Info </h3>
+		  <div class="form-group">
+		    <label for="inputfile">Input File</label>
+		    <input type="text" class="form-control" id="inputfile" placeholder="file_0.gcode">
+		  </div>
+		  <div class="form-group">
+		    <label for="outputfile">Output File</label>
+		    <input type="text" class="form-control" id="outputfile" placeholder="file_0_output.gcode">
+		  </div>
+		  <br> <br>
+		  <div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input" type="radio" name="enabled" id="cl-enabled" value="true">
+			    Crosslinking Enabled
+			  </label>
+		  </div>
+		  <br>
+		  <div class="form-group">
+		    <label for="cl-duration">Crosslinking Duration</label>
+		    <input type="number" class="form-control" id="cl-duration" placeholder="1000">
+		  </div>
+		  <div class="form-group">
+		    <label for="cl-intensity">Crosslinking Intensity</label>
+		    <input type="number" class="form-control" id="cl-intensity" placeholder="20">
+		  </div>
+		  <br> <br>
+		  <div class="form-group">
+		    <label for="extruder1">Pressure Extruder1</label>
+		    <input type="number" class="form-control" id="extruder1" placeholder="50.0">
+		  </div>
+		  <div class="form-group">
+		    <label for="extruder2">Pressure Extruder1</label>
+		    <input type="number" class="form-control" id="extruder2" placeholder="50.0">
+		  </div>
+		  <br><br>
+		  <div class="form-group">
+		    <label for="layer-height">Resolution Layer Height</label>
+		    <input type="number" class="form-control" id="layer-height" placeholder="0.8">
+		  </div>
+		  <div class="form-group">
+		    <label for="layer-num">Resolution Layer Num</label>
+		    <input type="number" class="form-control" id="layer-num" placeholder="42">
+		  </div>
+		  <br><br>
+		  <div class="form-group">
+		    <label for="wellplate">Wellplate</label>
+		    <input type="number" class="form-control" id="wellplate" placeholder="6">
+		  </div>
+		  <br>
+		  <h3>Print Data</h3>
+		  <div class="form-group">
+		    <label for="elasticity">Elasticity</label>
+		    <input type="number" class="form-control" id="elasticity" placeholder="6">
+		  </div>
+		  <div class="form-group">
+		    <label for="deadpercent">Percentage Dead</label>
+		    <input type="number" class="form-control" id="deadpercent" placeholder="50">
+		  </div>
+		  <div class="form-group">
+		    <label for="livepercent">Percentage Alive</label>
+		    <input type="number" class="form-control" id="livepercent" placeholder="50">
+		  </div>
+		  <br>
+		  <br>
+		  <button type="submit" class="btn btn-primary" id="search">Search</button>
+	</form> -->
+<!-- 	<br> <br>
+	<h3>Upload File with Data</h3>
+	<br>
+      <label class="custom-file">
+        <input type="file" id="file" class="custom-file-input">
+        <span class="custom-file-control"></span>
+      </label>
+
+      <button type="submit" class="btn btn-primary" id="upload-file">Upload Data</button> -->
+
+      <div id="fetched-entry"></div>
+
+    <!-- Important jQuery Bootstrap stuff -->
+
+    
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    	<script src="/bootstrap/dist/js/bootstrap.js"></script>
+
+    	<script type="text/javascript">
+    	var path = 'http://localhost:3000/'
+    	
+    	
+        $(document).ready(function() {
+        	// $('#search').click(function(){
+        	// 	var entrynum = $('#entry').val();
+        	// 	console.log(entrynum);
+
+        	// 	$.post(path+"getdata",{ entrynum: entrynum }, function(data) {
+        	// 		if (data == "FUCK YOU")
+        	// 		console.log(data);
+        	// 	});
+        	// });
+
+
+        	
+
+        	// $('#search').click(function() {
+        	// 	$.get("results/new", {something: "hello"}, function(data) {
+        	// 		console.log(data);
+        	// 	});
+        	// });
+
+        	// $('#upload-file').click(function(){
+        	// 	var filepath = $('#file').val();
+        	// 	$.post(path+"upload", {filepath: filepath}, function(data){
+        	// 		if(data == 'done') console.log('success');
+        	// 	});
+        	// });
+    	});
+    	</script>
+  </body>
+</html>
