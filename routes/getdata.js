@@ -7,7 +7,10 @@ var database = firebase.database();
 
 router.post('/', getEntry);
 
-router.post('/specific', getSpecificEntries);
+router.post('/specific', getSpecificEntries, function(req, res, next){
+	res.render('results', { title: 'Your Best Nightmare', count: req.count, entry: req.entries });
+
+});
 
 
 function getEntry(req, res, next) {
@@ -15,27 +18,31 @@ function getEntry(req, res, next) {
 	console.log(entrynum);
 	var group = Math.floor(entrynum/100);
 	//var data = {};
-	var query = database.ref("Group"+group.toString()+"/Entry"+entrynum.toString());
+	var query = database.ref("9-8-116"+"/Entry"+entrynum.toString());
 	query.once('value', function(snapshot) {
-		var data = snapshot.val();
-	//res.end();
-	console.log(data);
-	res.render('results', { title: 'Your Worst Nightmare', entrynum: entrynum, data: data}); 
+		var entry = snapshot.val();
+		res.render('results', { title: 'Your Worst Nightmare', count: 1, entry: [entry] }); 
 	});
 }
 
 function getSpecificEntries(req, res, next) {
-	var parameter = req.body.platenum;
+	var parameter = parseInt(req.body.platenum);
+	var count = 0;
+	var entries = [];
 	console.log(parameter);
-	for(i=0; i<1; i++){
 		//var group = Math.floor(i/100);
-		var query = database.ref("Group"+i.toString()).orderByChild('print_info/wellplate').equalTo(parameter);
-		query.once('value', function(snapshot) {
-			var data = snapshot.val();
-			console.log(data);
-		});
-	}
-		//res.render('results', { title: 'Your Best Nightmare', data: data.print_data}); 
+	var query = database.ref("9-8-116").orderByChild('print_info/wellplate').equalTo(parameter);
+	console.log(query);
+	query.on("child_added", function(snapshot){
+		count++;
+		console.log(snapshot.val());
+		entries.push(snapshot.val());
+		console.log(count);
+	});
+	 
+
+		//res.send("cooldude");
+	 
 }
 
 module.exports = router;

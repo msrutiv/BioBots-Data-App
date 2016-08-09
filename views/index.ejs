@@ -79,9 +79,9 @@
 					<input type="file" name="dataFile" class="custom-file-input">
 					<span class="custom-file-control"></span>
 				</label>
-				<button type="submit" class="btn btn-default" id="upload">Upload</button>
+				<button type="submit" class="btn btn-default">Upload</button>
 			</form>
-			<h3><%= upload %></h3>
+			<h3 id="uploaded"><%= upload %></h3>
 		</div>
 
 
@@ -174,7 +174,6 @@
 
       <button type="submit" class="btn btn-primary" id="upload-file">Upload Data</button> -->
 
-      <div id="fetched-entry"></div>
 
       <!-- Important jQuery Bootstrap stuff -->
 
@@ -183,22 +182,9 @@
       <script src="/bootstrap/dist/js/bootstrap.js"></script>
 
       <script type="text/javascript">
-      var path = 'http://localhost:3000/'
 
 
       $(document).ready(function() {
-        	// $('#search').click(function(){
-        	// 	var entrynum = $('#entry').val();
-        	// 	console.log(entrynum);
-
-        	// 	$.post(path+"getdata",{ entrynum: entrynum }, function(data) {
-        	// 		if (data == "FUCK YOU")
-        	// 		console.log(data);
-        	// 	});
-        	// });
-
-
-
 
         	// $('#search').click(function() {
         	// 	$.get("results/new", {something: "hello"}, function(data) {

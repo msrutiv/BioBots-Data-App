@@ -4,7 +4,10 @@ var fs = require('fs');
 var multer = require('multer');
 
 var today = new Date();
-var date = today.getDate() + '-' + today.getMonth()+1 + '-' +today.getYear();
+var day = today.getDate();
+var month = parseInt(today.getMonth()) + 1;
+var year = today.getYear().toString().slice(1);
+var date = day + '-' + month.toString() + '-' + year;
 
 var storage  = multer.diskStorage({
 	destination: function(req, file, callback) {
@@ -14,7 +17,7 @@ var storage  = multer.diskStorage({
 
 	filename: function(req, file, callback) {
 
-	callback(null, file.originalname); //eq.originalname
+	callback(null, file.originalname); 
 }
 });
 
@@ -23,49 +26,37 @@ var upload = multer({storage: storage});
 var firebase = require('firebase');
 
 var config = {
-	apiKey: "3uGDnp1doN6SMPSWfxHpncNJmq6DZDVwUlpj1rkK",
-	databaseURL: "https://biobots-data-analysis-79b63.firebaseio.com",
+	apiKey: "AIzaSyDm4wV6CqAeIy9-KZW1v445Loz-6hN2GGQ",
+	databaseURL: "https://biobots-data-app.firebaseio.com",
 };
 
 firebase.initializeApp(config);
 var database = firebase.database();
 
-// var filepath = '/Users/Sruti/Desktop/BioBots2/biobots/public/data/bioprint-data.json';
-// 
-// var data_in = JSON.parse(fs.readFileSync(filepath, 'utf8'));
-
-// for (var i=0; i < data_in.length; i++) {
-// 	var group = Math.floor(i/100);
-// 	database.ref('Group'+group.toString()+'/Entry'+i.toString()).set(data_in[i]);
-// }
-
-//var data = {};
 
 
 router.post('/upload', upload.single('dataFile'), uploadData);
 
 function uploadData(req, res) {
-	console.log(req.file.path);
-	var filepath = req.file.path;
-	res.render("index", {upload: "Upload Completed!"});
-	 //res.redirect('..');
-	 // var data_in = JSON.parse(fs.readFileSync(filepath, 'utf8'));
-	// for (var i=0; i < data_in.length; i++) {
-	// var group = Math.floor(i/100);
-	// database.ref(date+'/Group'+group.toString()+'/Entry'+i.toString()).set(data_in[i]);
-		// }	
+	console.log("look at me I'm here");
+ 	var filepath = req.file.path;
+ 	var filename = req.file.filename.toString();
+ 	var name = filename.split(".");
+ 	var data = "";
+ 	var data_in = fs.readFileSync(filepath, 'utf8', function(error, data) {
+ 		if(error) {
+ 			return console.log(error);
+ 		}
+ 		else console.log(data);
+ 	});
+ 	
+ 	try { data = JSON.parse(data_in); }
+ 	catch(e) { alert(e); }
 
-
-
-	// upload(req, res, function(error){
-	// 	if (error)
-	// 		return res.end("Error uploading file");
-	// 	else 
-	// 		res.end("Upload sucessful");
-
-	// // })
-	//console.log(req.file);
-	//res.send('done');
+ 	for (var i=0; i < data.length; i++) {
+		database.ref(name[0]+'_'+date+'/Entry'+i.toString()).set(data[i]);
+	}	
+	res.render("index", {upload: "Upload Complete!"});
 }
 
 /* GET home page. */

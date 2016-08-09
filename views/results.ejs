@@ -13,7 +13,7 @@
    <title> Data Results </title>
    <!-- Bootstrap -->
    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link href="/stylesheets/theme.css" rel="stylesheet"> 
+   <!-- <link href="/stylesheets/theme.css" rel="stylesheet">  -->
    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 <body>
@@ -77,39 +77,32 @@
                 </tr>
               </thead>
               <tbody>
+                <% for(i=0; i<count; i++) { %>
                 <tr>
-                  <td><%=entrynum%></td>
+                  <td><%=i%></td>
                   <td>
-                    <p><b>Email</b>  <%=data.user_info.email%></p>
-                    <p><b>Serial#</b>  <%=data.user_info.serial%></p>
+                    <p><b>Email</b>  <%=entry[i].user_info.email%></p>
+                    <p><b>Serial#</b>  <%=entry[i].user_info.serial%></p>
                   </td>
                   <td>
-                    <p><b>%Alive</b>  <%=data.print_data.livePercent%></p>
-                    <p><b>%Dead</b>  <%=data.print_data.deadPercent%></p>
-                    <p><b>Elasticity</b>  <%=data.print_data.elasticity%></p>
+                    <p><b>%Alive</b>  <%=entry[i][i].print_data.livePercent%></p>
+                    <p><b>%Dead</b>  <%=entry[i].print_data.deadPercent%></p>
+                    <p><b>Elasticity</b>  <%=entry[i].print_data.elasticity%></p>
                   </td>
                   <td>
-                    <% if (data.print_info.crosslinking.cl_enabled) { %>
-                      <p><b>Crosslinking Duration</b>  <%=data.print_info.crosslinking.cl_duration%></p>
-                      <p><b>Crosslinking Intensity</b>  <%=data.print_info.crosslinking.cl_intensity%></p>
+                    <% if (entry[i].print_info.crosslinking.cl_enabled) { %>
+                      <p><b>Crosslinking Duration</b>  <%=entry[i].print_info.crosslinking.cl_duration%></p>
+                      <p><b>Crosslinking Intensity</b>  <%=entry[i].print_info.crosslinking.cl_intensity%></p>
                     <% } %>
-                    <p><b>Layer Height</b>  <%=data.print_info.resolution.layerHeight%></p>
-                    <p><b>Pressure</b>  E1: <%=data.print_info.pressure.extruder1%> E2: <%=data.print_info.pressure.extruder1%></p>
-                    <p><b>Layer Height</b>  <%=data.print_info.resolution.layerHeight%></p>
-                    <p><b># of Layers</b>  <%=data.print_info.resolution.layerNum%></p>
-                    <p><b>Wellplate</b>  <%=data.print_info.wellplate%></p>
-                    <p><b>File Input</b>  <%=data.print_info.files.input%></p>
-                    <p><b>File Output</b>  <%=data.print_info.files.output%></p>
+                    <p><b>Pressure</b>  E1: <%=entry[i].print_info.pressure.extruder1%> E2: <%=entry[i].print_info.pressure.extruder1%></p>
+                    <p><b>Layer Height</b>  <%=entry[i].print_info.resolution.layerHeight%></p>
+                    <p><b># of Layers</b>  <%=entry[i].print_info.resolution.layerNum%></p>
+                    <p><b>Wellplate</b>  <%=entry[i].print_info.wellplate%></p>
+                    <p><b>File Input</b>  <%=entry[i].print_info.files.input%></p>
+                    <p><b>File Output</b>  <%=entry[i].print_info.files.output%></p>
                   </td>
                 </tr>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                
+                <% } %>
               </tbody>
             </table>
           </div>
