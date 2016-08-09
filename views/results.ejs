@@ -42,7 +42,27 @@
  <div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-0 main">
   <h1 class="page-header">Dashboard</h1>
 
-          <!--<div class="row placeholders">
+  <% if (analysis) { %>
+    <div class="jumbotron">
+      <div class="card card-outline-primary">
+        <div class="card-header">
+          Summary
+        </div>
+        <div class="card-block">
+          <blockquote class="card-blockquote">
+            <p><b>Average %Alive</b>  <%=analysis.avg_live%></p>
+            <p><b>Average %Dead</b>  <%=analysis.avg_dead%></p>
+            <p><b>StDv %Alive</b>  <%=analysis.stdv_live%></p>
+            <p><b>StDv %Dead</b>  <%=analysis.stdv_dead%></p>
+            <p><b>%Alive Max</b>  <%=analysis.max_live%></p>
+            <p><b>%Alive Min</b>  <%=analysis.min_live%></p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+       <!--    <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
@@ -63,9 +83,10 @@
               <h4>Label</h4>
               <span class="text-muted">Something else</span>
             </div>
-          </div> -->
+          </div>  -->
 
           <h2 class="sub-header">Results</h2>
+
           <div class="table-responsive">
             <table class="table table-striped">
               <thead class="thead-inverse">
@@ -85,7 +106,7 @@
                     <p><b>Serial#</b>  <%=entry[i].user_info.serial%></p>
                   </td>
                   <td>
-                    <p><b>%Alive</b>  <%=entry[i][i].print_data.livePercent%></p>
+                    <p><b>%Alive</b>  <%=entry[i].print_data.livePercent%></p>
                     <p><b>%Dead</b>  <%=entry[i].print_data.deadPercent%></p>
                     <p><b>Elasticity</b>  <%=entry[i].print_data.elasticity%></p>
                   </td>
@@ -113,7 +134,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="/bootstrap/dist/js/bootstrap.js"></script>
 
-        <script type="text/javascript"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+          
+        });
+        </script>
 
       </body>
       </html>
