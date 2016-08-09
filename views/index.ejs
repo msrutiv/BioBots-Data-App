@@ -1,67 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<!--Don't move the meta tags above, they're v important! -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Don't move the meta tags above, they're v important! -->
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <link rel="icon" href="../../favicon.ico"> -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title> BioBots Data App </title>
-    <!-- Bootstrap -->
-    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+	<title> BioBots Data App </title>
+	<!-- Bootstrap -->
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> 
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      		<div class="container">
-        		<div class="navbar-header">
-          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            			<span class="sr-only">Toggle navigation</span>
-            			<span class="icon-bar"></span>
-            			<span class="icon-bar"></span>
-            			<span class="icon-bar"></span>
-          			</button>
-          			<a class="navbar-brand" href="#"> BioBots</a>
-        		</div>
-        		<div id="navbar" class="collapse navbar-collapse">
-          			<ul class="nav navbar-nav">
-            			<li class="active"><a href="/">Home</a></li>
-            			<li><a href="/users">About</a></li>
-            			<li><a href="#contact">Contact</a></li>
-          			</ul>
-        		</div><!--/.nav-collapse -->
-      		</div>
-    </nav>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> BioBots</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
 
-      <div class="container">
 
-      <div class="starter-template">
-        <h1>Welcome to BioBots Data Analysis Platform</h1>
-        <p class="lead">Fill in the parameters below to search print data records<br></p>
-      </div>
+	<div class="container">
 
-      <form class="form-inline" method="post" action="/getdata">
-       	<div class="form-group">
-          <label for="entry">Entry#</label> 
-          <input type="number" class="form-control" id="entry" name="entrynum" placeholder="1" value ="">
-        </div>
-        <button type="submit" class="btn btn-primary" id="search">Search</button>
-      </form>	
-      <a href="/getdata" class="btn btn-primary">Test</a>
-      <br>
-      <form action="/upload", method="post", enctype="multipart/form-data">
-  		<!-- <input type="file" name="dataFile"> -->
-  		<label class="custom-file">
-        	<input type="file" name="dataFile" class="custom-file-input">
-        	<span class="custom-file-control"></span>
-      	</label>
-  		<button type="submit" class="btn btn-primary" id="upload">Upload</button>
-  	  </form>
+		<div class="starter-template">
+			<h1>Welcome to BioBots Data Analysis Platform</h1>
+		</div>
+
+
+		<div class="starter-template"> 
+			<p class="lead">Fill in the parameters below to search print data records<br></p>
+			<form class="form-inline" method="post" action="/getdata">
+				<div class="form-group">
+					<label for="entry">Entry#</label> 
+					<input type="number" class="form-control" id="entry" name="entrynum" placeholder="1" value ="">
+				</div>
+				<button type="submit" class="btn btn-default" id="search-num">Search</button>
+			</form>	
+			<br><br>
+			<form class="form-inline" method="post" action="/getdata/specific">
+				<div class="form-group">
+					<label for="entry">Well Plate #</label> 
+					<select class="form-control" name="platenum">
+					  <option value="1">1</option>
+					  <option value="6">6</option>
+					  <option value="12">12</option>
+					  <option value="24">24</option>
+					  <option value="96">96</option>
+					</select>
+<!-- 					<input type="number" class="form-control" id="entry" name="entrynum" placeholder="1" value ="">-->			
+				</div>
+				<button type="submit" class="btn btn-default" id="search-specific">Search</button>
+			</form> 
+			<br><br>
+		</div>
+
+		<div class= "starter-template">
+			<p class="lead"> Or choose a file to upload print data</p>
+			<form action="/upload", method="post", enctype="multipart/form-data">
+				<!-- <input type="file" name="dataFile"> -->
+				<label class="custom-file">
+					<input type="file" name="dataFile" class="custom-file-input">
+					<span class="custom-file-control"></span>
+				</label>
+				<button type="submit" class="btn btn-default" id="upload">Upload</button>
+			</form>
+			<h3><%= upload %></h3>
+		</div>
+
 
 
 
@@ -141,7 +163,7 @@
 		  <br>
 		  <br>
 		  <button type="submit" class="btn btn-primary" id="search">Search</button>
-	</form> -->
+		</form> -->
 <!-- 	<br> <br>
 	<h3>Upload File with Data</h3>
 	<br>
@@ -154,17 +176,17 @@
 
       <div id="fetched-entry"></div>
 
-    <!-- Important jQuery Bootstrap stuff -->
+      <!-- Important jQuery Bootstrap stuff -->
 
-    
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    	<script src="/bootstrap/dist/js/bootstrap.js"></script>
 
-    	<script type="text/javascript">
-    	var path = 'http://localhost:3000/'
-    	
-    	
-        $(document).ready(function() {
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="/bootstrap/dist/js/bootstrap.js"></script>
+
+      <script type="text/javascript">
+      var path = 'http://localhost:3000/'
+
+
+      $(document).ready(function() {
         	// $('#search').click(function(){
         	// 	var entrynum = $('#entry').val();
         	// 	console.log(entrynum);
@@ -176,7 +198,7 @@
         	// });
 
 
-        	
+
 
         	// $('#search').click(function() {
         	// 	$.get("results/new", {something: "hello"}, function(data) {
@@ -190,7 +212,7 @@
         	// 		if(data == 'done') console.log('success');
         	// 	});
         	// });
-    	});
-    	</script>
+  });
+      </script>
   </body>
-</html>
+  </html>
