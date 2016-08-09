@@ -11,10 +11,9 @@ router.post('/', getEntry);
 function getEntry(req, res, next) {
 	var entrynum = req.body.entrynum
 	console.log(entrynum)
-	var num = entrynum % 100;
 	var group = Math.floor(entrynum/100);
 	//var data = {};
-	var query = database.ref("Group"+group.toString()+"/Entry"+num.toString());
+	var query = database.ref("Group"+group.toString()+"/Entry"+entrynum.toString());
 	query.once('value', function(snapshot) {
 	var data = snapshot.val();
 	//res.end();
