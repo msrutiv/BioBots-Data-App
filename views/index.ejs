@@ -58,13 +58,12 @@
 				<div class="form-group">
 					<label for="entry">Well Plate #</label> 
 					<select class="form-control" name="platenum">
-					  <option value="1">1</option>
-					  <option value="6">6</option>
-					  <option value="12">12</option>
-					  <option value="24">24</option>
-					  <option value="96">96</option>
-					</select>
-<!-- 					<input type="number" class="form-control" id="entry" name="entrynum" placeholder="1" value ="">-->			
+						<option value="1">1</option>
+						<option value="6">6</option>
+						<option value="12">12</option>
+						<option value="24">24</option>
+						<option value="96">96</option>
+					</select>	
 				</div>
 				<button type="submit" class="btn btn-default" id="search-specific">Search</button>
 			</form> 
@@ -85,120 +84,11 @@
 		</div>
 
 
+		<!-- Important jQuery Bootstrap stuff -->
 
 
- <!--     <form class="form-inline">
-     	<h3> User Info </h3>
-		  <div class="form-group">
-		    <label for="serial">Serial #</label>
-		    <input type="number" class="form-control" id="serial" placeholder="0">
-		  </div>
-		  <div class="form-group">
-		    <label for="email">Email</label>
-		    <input type="email" class="form-control" id="email" placeholder="user0@gmail.com">
-		  </div>
-		  <br>
-		  <h3> Print Info </h3>
-		  <div class="form-group">
-		    <label for="inputfile">Input File</label>
-		    <input type="text" class="form-control" id="inputfile" placeholder="file_0.gcode">
-		  </div>
-		  <div class="form-group">
-		    <label for="outputfile">Output File</label>
-		    <input type="text" class="form-control" id="outputfile" placeholder="file_0_output.gcode">
-		  </div>
-		  <br> <br>
-		  <div class="form-check">
-			  <label class="form-check-label">
-			    <input class="form-check-input" type="radio" name="enabled" id="cl-enabled" value="true">
-			    Crosslinking Enabled
-			  </label>
-		  </div>
-		  <br>
-		  <div class="form-group">
-		    <label for="cl-duration">Crosslinking Duration</label>
-		    <input type="number" class="form-control" id="cl-duration" placeholder="1000">
-		  </div>
-		  <div class="form-group">
-		    <label for="cl-intensity">Crosslinking Intensity</label>
-		    <input type="number" class="form-control" id="cl-intensity" placeholder="20">
-		  </div>
-		  <br> <br>
-		  <div class="form-group">
-		    <label for="extruder1">Pressure Extruder1</label>
-		    <input type="number" class="form-control" id="extruder1" placeholder="50.0">
-		  </div>
-		  <div class="form-group">
-		    <label for="extruder2">Pressure Extruder1</label>
-		    <input type="number" class="form-control" id="extruder2" placeholder="50.0">
-		  </div>
-		  <br><br>
-		  <div class="form-group">
-		    <label for="layer-height">Resolution Layer Height</label>
-		    <input type="number" class="form-control" id="layer-height" placeholder="0.8">
-		  </div>
-		  <div class="form-group">
-		    <label for="layer-num">Resolution Layer Num</label>
-		    <input type="number" class="form-control" id="layer-num" placeholder="42">
-		  </div>
-		  <br><br>
-		  <div class="form-group">
-		    <label for="wellplate">Wellplate</label>
-		    <input type="number" class="form-control" id="wellplate" placeholder="6">
-		  </div>
-		  <br>
-		  <h3>Print Data</h3>
-		  <div class="form-group">
-		    <label for="elasticity">Elasticity</label>
-		    <input type="number" class="form-control" id="elasticity" placeholder="6">
-		  </div>
-		  <div class="form-group">
-		    <label for="deadpercent">Percentage Dead</label>
-		    <input type="number" class="form-control" id="deadpercent" placeholder="50">
-		  </div>
-		  <div class="form-group">
-		    <label for="livepercent">Percentage Alive</label>
-		    <input type="number" class="form-control" id="livepercent" placeholder="50">
-		  </div>
-		  <br>
-		  <br>
-		  <button type="submit" class="btn btn-primary" id="search">Search</button>
-		</form> -->
-<!-- 	<br> <br>
-	<h3>Upload File with Data</h3>
-	<br>
-      <label class="custom-file">
-        <input type="file" id="file" class="custom-file-input">
-        <span class="custom-file-control"></span>
-      </label>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.js"></script>
 
-      <button type="submit" class="btn btn-primary" id="upload-file">Upload Data</button> -->
-
-
-      <!-- Important jQuery Bootstrap stuff -->
-
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="/bootstrap/dist/js/bootstrap.js"></script>
-
-      <script type="text/javascript">
-
-
-      $(document).ready(function() {
-
-        	// $('#search').click(function() {
-        	// 	$.get("results/new", {something: "hello"}, function(data) {
-        	// 		console.log(data);
-        	// 	});
-        	// });
-
-        	// $('#upload-file').click(function(){
-        	// 	var filepath = $('#file').val();
-        	// 	$.post(path+"upload", {filepath: filepath}, function(data){
-        	// 		if(data == 'done') console.log('success');
-        	// 	});
-        	// });
-  });
-      </script>
-  </body>
-  </html>
+	</body>
+	</html>
