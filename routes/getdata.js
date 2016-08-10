@@ -23,7 +23,7 @@ function getEntry(req, res, next) {
 }
 
 function getSpecificEntries(req, res, next) {
-	//grab all entries with specific parameter, currently wellplate #
+	//grab all entries with specific parameter, currently wellplate type
 	var parameter = parseInt(req.body.platenum);
 	var count = 0;
 	var entries = [];
